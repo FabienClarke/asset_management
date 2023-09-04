@@ -68,6 +68,8 @@ require 'cek.php';
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
+                                            <th>No.</th>
+                                            <th>Opsi</th>
                                             <th>Serial Number</th>
                                             <th>Name</th>
                                             <th>Status</th>
@@ -78,9 +80,6 @@ require 'cek.php';
                                             <th>Tier 1</th>
                                             <th>Tier 2</th>
                                             <th>Tier 3</th>
-                                            <th>Received Date</th>
-                                            <th>Installation Date</th>
-                                            <th>Modified Date</th>
                                             <th>Site Group</th>
                                             <th>Asset Site</th>
                                             <th>Building</th>
@@ -96,81 +95,283 @@ require 'cek.php';
                                             <th>Entity Relationship Status</th>
                                             <th>Div</th>
                                             <th>Dept</th>
+                                            <th>Support Group Supported by Relationship Status</th>
+                                            <th>Supported by Organization</th>
+                                            <th>Supported by Support Group</th>
+                                            <th>Support Group Managed by Relationship Status</th>
+                                            <th>Managed by Organization</th>
+                                            <th>Managed by Support Group</th>
+                                            <th>Normalized Entity</th>
+                                            <th>Organization Merged</th>
+                                            <th>Derpartment Merged</th>
                                             <th>Description</th>
                                             <th>Tag Number</th>
                                             <th>Siegel Normalized</th>
                                             <th>Siegel C</th>
+                                            <th>PHM - Status SK033/SK026 APR 2023</th>
+                                            <th>PC New Model</th>
+                                            <th>Company</th>
+                                            <th>Phase</th>
                                         </tr>
                                     </thead>
+                                    <tfoot>
+                                        <tr>
+                                            <th>No.</th>
+                                            <th>Opsi</th>
+                                            <th>Serial Number</th>
+                                            <th>Name</th>
+                                            <th>Status</th>
+                                            <th>Short Description</th>
+                                            <th>Supplier Name</th>
+                                            <th>Model Number</th>
+                                            <th>Asset ID</th>
+                                            <th>Tier 1</th>
+                                            <th>Tier 2</th>
+                                            <th>Tier 3</th>
+                                            <th>Site Group</th>
+                                            <th>Asset Site</th>
+                                            <th>Building</th>
+                                            <th>Floor Room</th>
+                                            <th>People Relationship Status</th>
+                                            <th>Site</th>
+                                            <th>PSA Code</th>
+                                            <th>PSA Site Name</th>
+                                            <th>Organization</th>
+                                            <th>Department</th>
+                                            <th>Remedy Login ID</th>
+                                            <th>Full Name</th>
+                                            <th>Entity Relationship Status</th>
+                                            <th>Div</th>
+                                            <th>Dept</th>
+                                            <th>Support Group Supported by Relationship Status</th>
+                                            <th>Supported by Organization</th>
+                                            <th>Supported by Support Group</th>
+                                            <th>Support Group Managed by Relationship Status</th>
+                                            <th>Managed by Organization</th>
+                                            <th>Managed by Support Group</th>
+                                            <th>Normalized Entity</th>
+                                            <th>Organization Merged</th>
+                                            <th>Derpartment Merged</th>
+                                            <th>Description</th>
+                                            <th>Tag Number</th>
+                                            <th>Siegel Normalized</th>
+                                            <th>Siegel C</th>
+                                            <th>PHM - Status SK033/SK026 APR 2023</th>
+                                            <th>PC New Model</th>
+                                            <th>Company</th>
+                                            <th>Phase</th>
+                                        </tr>
+                                    </tfoot>
                                     <tbody>
-                                        <tr>
-                                            <td>5CG2383F1S</td>
-                                            <td>EPZ09OFFN1010</td>
-                                            <td>Deployed</td>
-                                            <td>PC Laptop Common</td>
-                                            <td>MITRA INTEGRASI INFORMATIKA, PT.</td>
-                                            <td>HP EliteBook 840 G8</td>
-                                            <td>23MIIPEPN1-0195</td>
-                                            <td>Hardware</td>
-                                            <td>Processing Unit</td>
-                                            <td>PC Laptop Common</td>
-                                            <td>09/02/2023</td>
-                                            <td>01/02/2023</td>
-                                            <td>27/04/2023</td>
-                                            <td>PEP</td>
-                                            <td>Asset 5 Office</td>
-                                            <td>ZONA 9</td>
-                                            <td>0</td>
-                                            <td>Used by</td>
-                                            <td>0</td>
-                                            <td>0</td>
-                                            <td>0</td>
-                                            <td>0</td>
-                                            <td>0</td>
-                                            <td>88009122</td>
-                                            <td>Darmapala</td>
-                                            <td>-</td>
-                                            <td>0</td>
-                                            <td>0</td>
-                                            <td>Sr Manager Production & Project</td>
-                                            <td>4800148668</td>
-                                            <td>PRJ</td>
-                                            <td>Project dan Production </td>
-                                        </tr>
-                                        <tr>
-                                            <td>5CG2383F75</td>
-                                            <td>EPZ09OFFN1007</td>
-                                            <td>Deployed</td>
-                                            <td>PC Laptop Common</td>
-                                            <td>MITRA INTEGRASI INFORMATIKA, PT.</td>
-                                            <td>HP EliteBook 840 G8</td>
-                                            <td>EPZ09OFFN1007</td>
-                                            <td>Hardware</td>
-                                            <td>Processing Unit</td>
-                                            <td>PC Laptop Common</td>
-                                            <td>09/02/2023</td>
-                                            <td>03/02/2023</td>
-                                            <td>27/04/2023</td>
-                                            <td>PEP</td>
-                                            <td>Asset 5 Office</td>
-                                            <td>ZONA 9</td>
-                                            <td>0</td>
-                                            <td>Used by</td>
-                                            <td>0</td>
-                                            <td>0</td>
-                                            <td>0</td>
-                                            <td>0</td>
-                                            <td>0</td>
-                                            <td>740789</td>
-                                            <td>Djoko Soeseno</td>
-                                            <td>-</td>
-                                            <td>0</td>
-                                            <td>0</td>
-                                            <td>Manager Production Operations</td>
-                                            <td>4800148668</td>
-                                            <td>PRJ</td>
-                                            <td>Project dan Production </td>
-                                        </tr>
+
+                                        <?php
+                                        $ambildatabase = mysqli_query($conn, "select * from asset_data");
+                                        $i = 1;
+                                        while ($data = mysqli_fetch_array($ambildatabase)) {
+                                            $serial_number = $data['serial_number'];
+                                            $name = $data['name'];
+                                            $status = $data['status'];
+                                            $short_description = $data['short_description'];
+                                            $supplier_name = $data['supplier_name'];
+                                            $model_number = $data['model_number'];
+                                            $asset_id = $data['asset_id'];
+                                            $tier_1 = $data['tier_1'];
+                                            $tier_2 = $data['tier_2'];
+                                            $tier_3 = $data['tier_3'];
+                                            $site_group = $data['site_group'];
+                                            $asset_site = $data['asset_site'];
+                                            $building = $data['building'];
+                                            $floor_room = $data['floor_room'];
+                                            $people_relationship_status = $data['people_relationship_status'];
+                                            $site = $data['site'];
+                                            $psa_code = $data['psa_code'];
+                                            $psa_site_name = $data['psa_site_name'];
+                                            $organization = $data['organization'];
+                                            $department = $data['department'];
+                                            $remedy_login_id = $data['remedy_login_id'];
+                                            $full_name = $data['full_name'];
+                                            $entity_relationship_status = $data['entity_relationship_status'];
+                                            $div = $data['div'];
+                                            $dept = $data['dept'];
+                                            $support_group_supported_by_relationship_status = $data['support_group_supported_by_relationship_status'];
+                                            $supported_by_organization = $data['supported_by_organization'];
+                                            $supported_by_support_group = $data['supported_by_support_group'];
+                                            $support_group_managed_by_relationship_status = $data['support_group_managed_by_relationship_status'];
+                                            $managed_by_organization = $data['managed_by_organization'];
+                                            $managed_by_support_group = $data['managed_by_support_group'];
+                                            $normalized_entity = $data['normalized_entity'];
+                                            $organization_merged = $data['organization_merged'];
+                                            $department_merged = $data['department_merged'];
+                                            $description = $data['description'];
+                                            $tag_number = $data['tag_number'];
+                                            $siegel_normalized = $data['siegel_normalized'];
+                                            $siegel_c = $data['siegel_c'];
+                                            $phm_status = $data['phm_status'];
+                                            $pc_new_model = $data['pc_new_model'];
+                                            $company = $data['company'];
+                                            $phase = $data['phase'];
+                                        ?>
+                                            <tr>
+                                                <td><?= $i++ ?></td>
+                                                <td>
+                                                    <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#Edit" <?= $serial_number; ?>>
+                                                        Edit
+                                                    </button>
+                                                    <input type="hidden" name="serialnumberitem" value="<?= $serial_number; ?>">
+                                                </td>
+                                                <td><?= $serial_number ?></td>
+                                                <td><?= $name ?></td>
+                                                <td><?= $status ?></td>
+                                                <td><?= $short_description ?></td>
+                                                <td><?= $supplier_name ?></td>
+                                                <td><?= $model_number ?></td>
+                                                <td><?= $asset_id ?></td>
+                                                <td><?= $tier_1 ?></td>
+                                                <td><?= $tier_2 ?></td>
+                                                <td><?= $tier_3 ?></td>
+                                                <td><?= $site_group ?></td>
+                                                <td><?= $asset_site ?></td>
+                                                <td><?= $building ?></td>
+                                                <td><?= $floor_room ?></td>
+                                                <td><?= $people_relationship_status ?></td>
+                                                <td><?= $site ?></td>
+                                                <td><?= $psa_code ?></td>
+                                                <td><?= $psa_site_name ?></td>
+                                                <td><?= $organization ?></td>
+                                                <td><?= $department ?></td>
+                                                <td><?= $remedy_login_id ?></td>
+                                                <td><?= $full_name ?></td>
+                                                <td><?= $entity_relationship_status ?></td>
+                                                <td><?= $div ?></td>
+                                                <td><?= $dept ?></td>
+                                                <td><?= $support_group_supported_by_relationship_status ?></td>
+                                                <td><?= $supported_by_organization ?></td>
+                                                <td><?= $supported_by_support_group ?></td>
+                                                <td><?= $support_group_managed_by_relationship_status ?></td>
+                                                <td><?= $managed_by_organization ?></td>
+                                                <td><?= $managed_by_support_group ?></td>
+                                                <td><?= $normalized_entity ?></td>
+                                                <td><?= $organization_merged ?></td>
+                                                <td><?= $department_merged ?></td>
+                                                <td><?= $description ?></td>
+                                                <td><?= $tag_number ?></td>
+                                                <td><?= $siegel_normalized ?></td>
+                                                <td><?= $siegel_c ?></td>
+                                                <td><?= $phm_status ?></td>
+                                                <td><?= $pc_new_model ?></td>
+                                                <td><?= $company ?></td>
+                                                <td><?= $phase ?></td>
+                                            </tr>
+                                            <div class="modal fade" id="Edit" <?= $serial_number; ?>>
+                                                <div class="modal-dialog">
+                                                    <div class="modal-content">
+
+                                                        <!-- Modal Header -->
+                                                        <div class="modal-header">
+                                                            <h4 class="modal-title">Edit</h4>
+                                                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                        </div>
+
+                                                        <!-- Modal body -->
+                                                        <form method="post">
+                                                            <div class="modal-body">
+                                                                <input type="text" name="serial_number" value="<?= $serial_number; ?>" class="form-control" required>
+                                                                <br>
+                                                                <input type="text" name="name" value="<?= $name; ?>" class="form-control" required>
+                                                                <br>
+                                                                <input type="text" name="status" value="<?= $status; ?>" class="form-contol" required>
+                                                                <br>
+                                                                <input type="text" name="short_description" value="<?= $short_description; ?>" class="form-contol" required>
+                                                                <br>
+                                                                <input type="text" name="supplier_name" value="<?= $supplier_name; ?>" class="form-contol" required>
+                                                                <br>
+                                                                <input type="text" name="model_number" value="<?= $model_number; ?>" class="form-contol" required>
+                                                                <br>
+                                                                <input type="text" name="asset_id" value="<?= $asset_id; ?>" class="form-contol" required>
+                                                                <br>
+                                                                <input type="text" name="tier_1" value="<?= $tier_1; ?>" class="form-contol" required>
+                                                                <br>
+                                                                <input type="text" name="tier_2" value="<?= $tier_2; ?>" class="form-contol" required>
+                                                                <br>
+                                                                <input type="text" name="tier_3" value="<?= $tier_3; ?>" class="form-contol" required>
+                                                                <br>
+                                                                <input type="text" name="site_group" value="<?= $site_group; ?>" class="form-contol" required>
+                                                                <br>
+                                                                <input type="text" name="asset_site" value="<?= $asset_site; ?>" class="form-contol" required>
+                                                                <br>
+                                                                <input type="text" name="building" value="<?= $building; ?>" class="form-contol" required>
+                                                                <br>
+                                                                <input type="text" name="floor_room" value="<?= $floor_room; ?>" class="form-contol">
+                                                                <br>
+                                                                <input type="text" name="people_relationship_status" value="<?= $people_relationship_status; ?>" class="form-contol">
+                                                                <br>
+                                                                <input type="text" name="site" value="<?= $site; ?>" class="form-contol" required>
+                                                                <br>
+                                                                <input type="text" name="psa_code" value="<?= $psa_code; ?>" class="form-contol" required>
+                                                                <br>
+                                                                <input type="text" name="psa_site_name" value="<?= $psa_site_name; ?>" class="form-contol" required>
+                                                                <br>
+                                                                <input type="text" name="organization" value="<?= $organization; ?>" class="form-contol" required>
+                                                                <br>
+                                                                <input type="text" name="department" value="<?= $department; ?>" class="form-contol" required>
+                                                                <br>
+                                                                <input type="text" name="remedy_login_id" value="<?= $remedy_login_id; ?>" class="form-contol" required>
+                                                                <br>
+                                                                <input type="text" name="full_name" value="<?= $full_name; ?>" class="form-contol" required>
+                                                                <br>
+                                                                <input type="text" name="entity_relationship_status" value="<?= $entity_relationship_status; ?>" class="form-contol">
+                                                                <br>
+                                                                <input type="text" name="div" value="<?= $div; ?>" class="form-contol">
+                                                                <br>
+                                                                <input type="text" name="dept" value="<?= $dept; ?>" class="form-contol">
+                                                                <br>
+                                                                <input type="text" name="support_group_supported_by_relationship_status" value="<?= $support_group_supported_by_relationship_status; ?>" class="form-contol">
+                                                                <br>
+                                                                <input type="text" name="supported_by_organization" value="<?= $supported_by_organization; ?>" class="form-contol">
+                                                                <br>
+                                                                <input type="text" name="supported_by_support_group" value="<?= $supported_by_support_group; ?>" class="form-contol">
+                                                                <br>
+                                                                <input type="text" name="support_group_managed_by_relationship_status" value="<?= $support_group_managed_by_relationship_status; ?>" class="form-contol">
+                                                                <br>
+                                                                <input type="text" name="managed_by_organization" value="<?= $managed_by_organization; ?>" class="form-contol">
+                                                                <br>
+                                                                <input type="text" name="managed_by_support_group" value="<?= $managed_by_support_group; ?>" class="form-contol">
+                                                                <br>
+                                                                <input type="text" name="normalized_entity" value="<?= $normalized_entity; ?>" class="form-contol">
+                                                                <br>
+                                                                <input type="text" name="organization_merged" value="<?= $organization_merged; ?>" class="form-contol">
+                                                                <br>
+                                                                <input type="text" name="department_merged" value="<?= $department_merged; ?>" class="form-contol">
+                                                                <br>
+                                                                <input type="text" name="description" value="<?= $description; ?>" class="form-contol" required>
+                                                                <br>
+                                                                <input type="text" name="tag_number" value="<?= $tag_number; ?>" class="form-contol" required>
+                                                                <br>
+                                                                <input type="text" name="siegel_normalized" value="<?= $siegel_normalized; ?>" class="form-contol" required>
+                                                                <br>
+                                                                <input type="text" name="siegel_c" value="<?= $siegel_c; ?>" class="form-contol" required>
+                                                                <br>
+                                                                <input type="text" name="phm_status" value="<?= $phm_status; ?>" class="form-contol" required>
+                                                                <br>
+                                                                <input type="text" name="pc_new_model" value="<?= $pc_new_model; ?>" class="form-contol">
+                                                                <br>
+                                                                <input type="text" name="company" value="<?= $company; ?>" class="form-contol">
+                                                                <br>
+                                                                <input type="text" name="phase" value="<?= $phase; ?>" class="form-contol">
+                                                                <br>                                                                
+                                                            </div>
+                                                        </form>
+
+                                                        <!-- Modal footer -->
+                                                        <div class="modal-footer">
+                                                            <button type="submit" class="btn btn-primary" name="update">Update</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        <?php
+                                        };
+                                        ?>
                                     </tbody>
                                 </table>
                             </div>
