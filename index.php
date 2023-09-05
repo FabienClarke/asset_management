@@ -40,6 +40,10 @@ require 'cek.php';
                             <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                             Export
                         </a>
+                        <a class="nav-link" href="history.php">
+                            <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                            Update History
+                        </a>
                         <div class="sb-sidenav-menu-heading"></div>
                         <a class="nav-link" href="logout.php">
                             Logout
@@ -65,7 +69,7 @@ require 'cek.php';
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
-                                            <th>Reconciliation Identity</th>
+                                            <th>No.</th>
                                             <th>Serial Number</th>
                                             <th>Name</th>
                                             <th>Status</th>
@@ -76,9 +80,8 @@ require 'cek.php';
                                             <th>Tier 1</th>
                                             <th>Tier 2</th>
                                             <th>Tier 3</th>
-                                            <th>Received Date</th>
-                                            <th>Installation Date</th>
                                             <th>Modified Date</th>
+                                            <th>Modified By</th>
                                             <th>Site Group</th>
                                             <th>Asset Site</th>
                                             <th>Building</th>
@@ -107,11 +110,15 @@ require 'cek.php';
                                             <th>Tag Number</th>
                                             <th>Siegel Normalized</th>
                                             <th>Siegel C</th>
+                                            <th>PHM - Status SK033/SK026 APR 2023</th>
+                                            <th>PC New Model</th>
+                                            <th>Company</th>
+                                            <th>Phase</th>
                                         </tr>
                                     </thead>
                                     <tfoot>
                                         <tr>
-                                            <th>Reconciliation Identity</th>
+                                            <th>No.</th>
                                             <th>Serial Number</th>
                                             <th>Name</th>
                                             <th>Status</th>
@@ -122,9 +129,8 @@ require 'cek.php';
                                             <th>Tier 1</th>
                                             <th>Tier 2</th>
                                             <th>Tier 3</th>
-                                            <th>Received Date</th>
-                                            <th>Installation Date</th>
                                             <th>Modified Date</th>
+                                            <th>Modified By</th>
                                             <th>Site Group</th>
                                             <th>Asset Site</th>
                                             <th>Building</th>
@@ -153,14 +159,18 @@ require 'cek.php';
                                             <th>Tag Number</th>
                                             <th>Siegel Normalized</th>
                                             <th>Siegel C</th>
+                                            <th>PHM - Status SK033/SK026 APR 2023</th>
+                                            <th>PC New Model</th>
+                                            <th>Company</th>
+                                            <th>Phase</th>
                                         </tr>
                                     </tfoot>
                                     <tbody>
 
                                         <?php
                                         $ambildatabase = mysqli_query($conn, "select * from asset_data");
+                                        $i = 1;
                                         while ($data = mysqli_fetch_array($ambildatabase)) {
-                                            $reconciliation_identity = $data['reconciliation_identity'];
                                             $serial_number = $data['serial_number'];
                                             $name = $data['name'];
                                             $status = $data['status'];
@@ -171,9 +181,8 @@ require 'cek.php';
                                             $tier_1 = $data['tier_1'];
                                             $tier_2 = $data['tier_2'];
                                             $tier_3 = $data['tier_3'];
-                                            $received_date = $data['received_date'];
-                                            $installation_date = $data['installation_date'];
                                             $modified_date = $data['modified_date'];
+                                            $modified_by = $data['modified_by'];
                                             $site_group = $data['site_group'];
                                             $asset_site = $data['asset_site'];
                                             $building = $data['building'];
@@ -202,51 +211,58 @@ require 'cek.php';
                                             $tag_number = $data['tag_number'];
                                             $siegel_normalized = $data['siegel_normalized'];
                                             $siegel_c = $data['siegel_c'];
+                                            $phm_status = $data['phm_status'];
+                                            $pc_new_model = $data['pc_new_model'];
+                                            $company = $data['company'];
+                                            $phase = $data['phase'];
                                         ?>
-                                        <tr>
-                                            <td><?=$reconciliation_identity?></td>
-                                            <td><?=$serial_number?></td>
-                                            <td><?=$name?></td>
-                                            <td><?=$status?></td>
-                                            <td><?=$short_description?></td>
-                                            <td><?=$supplier_name?></td>
-                                            <td><?=$model_number?></td>
-                                            <td><?=$asset_id?></td>
-                                            <td><?=$tier_1?></td>
-                                            <td><?=$tier_2?></td>
-                                            <td><?=$tier_3?></td>
-                                            <td><?=$received_date?></td>
-                                            <td><?=$installation_date?></td>
-                                            <td><?=$modified_date?></td>
-                                            <td><?=$site_group?></td>
-                                            <td><?=$asset_site?></td>
-                                            <td><?=$building?></td>
-                                            <td><?=$floor_room?></td>
-                                            <td><?=$people_relationship_status?></td>
-                                            <td><?=$site?></td>
-                                            <td><?=$psa_code?></td>
-                                            <td><?=$psa_site_name?></td>
-                                            <td><?=$organization?></td>
-                                            <td><?=$department?></td>
-                                            <td><?=$remedy_login_id?></td>
-                                            <td><?=$full_name?></td>
-                                            <td><?=$entity_relationship_status?></td>
-                                            <td><?=$div?></td>
-                                            <td><?=$dept?></td>
-                                            <td><?=$support_group_supported_by_relationship_status?></td>
-                                            <td><?=$supported_by_organization?></td>
-                                            <td><?=$supported_by_support_group?></td>
-                                            <td><?=$support_group_managed_by_relationship_status?></td>
-                                            <td><?=$managed_by_organization?></td>
-                                            <td><?=$managed_by_support_group?></td>
-                                            <td><?=$normalized_entity?></td>
-                                            <td><?=$organization_merged?></td>
-                                            <td><?=$department_merged?></td>
-                                            <td><?=$description?></td>
-                                            <td><?=$tag_number?></td>
-                                            <td><?=$siegel_normalized?></td>
-                                            <td><?=$siegel_c?></td>
-                                        </tr>
+                                            <tr>
+                                                <td><?= $i++ ?></td>
+                                                <td><?= $serial_number ?></td>
+                                                <td><?= $name ?></td>
+                                                <td><?= $status ?></td>
+                                                <td><?= $short_description ?></td>
+                                                <td><?= $supplier_name ?></td>
+                                                <td><?= $model_number ?></td>
+                                                <td><?= $asset_id ?></td>
+                                                <td><?= $tier_1 ?></td>
+                                                <td><?= $tier_2 ?></td>
+                                                <td><?= $tier_3 ?></td>
+                                                <td><?= $modified_date ?></td>
+                                                <td><?= $modified_by ?></td>
+                                                <td><?= $site_group ?></td>
+                                                <td><?= $asset_site ?></td>
+                                                <td><?= $building ?></td>
+                                                <td><?= $floor_room ?></td>
+                                                <td><?= $people_relationship_status ?></td>
+                                                <td><?= $site ?></td>
+                                                <td><?= $psa_code ?></td>
+                                                <td><?= $psa_site_name ?></td>
+                                                <td><?= $organization ?></td>
+                                                <td><?= $department ?></td>
+                                                <td><?= $remedy_login_id ?></td>
+                                                <td><?= $full_name ?></td>
+                                                <td><?= $entity_relationship_status ?></td>
+                                                <td><?= $div ?></td>
+                                                <td><?= $dept ?></td>
+                                                <td><?= $support_group_supported_by_relationship_status ?></td>
+                                                <td><?= $supported_by_organization ?></td>
+                                                <td><?= $supported_by_support_group ?></td>
+                                                <td><?= $support_group_managed_by_relationship_status ?></td>
+                                                <td><?= $managed_by_organization ?></td>
+                                                <td><?= $managed_by_support_group ?></td>
+                                                <td><?= $normalized_entity ?></td>
+                                                <td><?= $organization_merged ?></td>
+                                                <td><?= $department_merged ?></td>
+                                                <td><?= $description ?></td>
+                                                <td><?= $tag_number ?></td>
+                                                <td><?= $siegel_normalized ?></td>
+                                                <td><?= $siegel_c ?></td>
+                                                <td><?= $phm_status ?></td>
+                                                <td><?= $pc_new_model ?></td>
+                                                <td><?= $company ?></td>
+                                                <td><?= $phase ?></td>
+                                            </tr>
                                         <?php
                                         };
                                         ?>
