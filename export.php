@@ -40,6 +40,10 @@ require 'cek.php';
                             <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                             Export
                         </a>
+                        <a class="nav-link" href="history.php">
+                            <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                            Update History
+                        </a>
                         <div class="sb-sidenav-menu-heading"></div>
                         <a class="nav-link" href="logout.php">
                             Logout
