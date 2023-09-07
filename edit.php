@@ -215,10 +215,10 @@ require 'cek.php';
                                             <tr>
                                                 <td><?= $i++ ?></td>
                                                 <td>
-                                                    <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#Edit" <?= $serial_number; ?>>
+                                                    <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#Edit<?= $serial_number; ?>">
                                                         Edit
                                                     </button>
-                                                    <input type="hidden" name="serialnumberitem" value="<?= $serial_number; ?>">
+                                                    <input type="hidden" name="idasset" value="<?= $serial_number; ?>">
                                                 </td>
                                                 <td><?= $serial_number ?></td>
                                                 <td><?= $name ?></td>
@@ -263,7 +263,7 @@ require 'cek.php';
                                                 <td><?= $company ?></td>
                                                 <td><?= $phase ?></td>
                                             </tr>
-                                            <div class="modal fade" id="Edit" <?= $serial_number; ?>>
+                                            <div class="modal fade" id="Edit<?= $serial_number; ?>">
                                                 <div class="modal-dialog">
                                                     <div class="modal-content">
 
@@ -276,53 +276,45 @@ require 'cek.php';
                                                         <!-- Modal body -->
                                                         <form method="post">
                                                             <div class="modal-body">
-                                                                <select name="asset">
-                                                                    <?php
-                                                                        $ambildataasset = mysqli_query($conn, "select * from asset_data");
-                                                                        while($fetcharray = mysqli_fetch_array($ambildataasset)){
-                                                                            $serial_number_asset = $fetcharray['serial_number'];
-                                                                            
-                                                                        }
-                                                                    ?>
-                                                                </select>
+                                                                <input type="hidden" name="serial_number" value="<?= $serial_number ?>;">
                                                                 <label for="SerialNumber" class="form-label">Serial Number</label>
-                                                                <input type="text" name="serial_number" value="<?= $serial_number; ?>" class="form-control" required>
+                                                                <input type="text" name="serial_number" value="<?= $serial_number; ?>" class="form-control" disabled>
                                                                 <br>
                                                                 <label for="Name" class="form-label">Name</label>
-                                                                <input type="text" name="name" value="<?= $name; ?>" class="form-control" required>
+                                                                <input type="text" name="name" value="<?= $name; ?>" class="form-control">
                                                                 <br>
                                                                 <label for="Status" class="form-label">Status</label>
-                                                                <input type="text" name="status" value="<?= $status; ?>" class="form-control" required>
+                                                                <input type="text" name="status" value="<?= $status; ?>" class="form-control">
                                                                 <br>
                                                                 <label for="ShortDescription" class="form-label">Short Description</label>
-                                                                <input type="text" name="short_description" value="<?= $short_description; ?>" class="form-control" required>
+                                                                <input type="text" name="short_description" value="<?= $short_description; ?>" class="form-control">
                                                                 <br>
                                                                 <label for="SupplierName" class="form-label">Supplier Name</label>
-                                                                <input type="text" name="supplier_name" value="<?= $supplier_name; ?>" class="form-control" required>
+                                                                <input type="text" name="supplier_name" value="<?= $supplier_name; ?>" class="form-control">
                                                                 <br>
                                                                 <label for="ModelNumber" class="form-label">Model Number</label>
-                                                                <input type="text" name="model_number" value="<?= $model_number; ?>" class="form-control" required>
+                                                                <input type="text" name="model_number" value="<?= $model_number; ?>" class="form-control">
                                                                 <br>
                                                                 <label for="AssetID" class="form-label">Asset ID</label>
-                                                                <input type="text" name="asset_id" value="<?= $asset_id; ?>" class="form-control" required>
+                                                                <input type="text" name="asset_id" value="<?= $asset_id; ?>" class="form-control">
                                                                 <br>
                                                                 <label for="Tier1" class="form-label">Tier 1</label>
-                                                                <input type="text" name="tier_1" value="<?= $tier_1; ?>" class="form-control" required>
+                                                                <input type="text" name="tier_1" value="<?= $tier_1; ?>" class="form-control">
                                                                 <br>
                                                                 <label for="Tier2" class="form-label">Tier 2</label>
-                                                                <input type="text" name="tier_2" value="<?= $tier_2; ?>" class="form-control" required>
+                                                                <input type="text" name="tier_2" value="<?= $tier_2; ?>" class="form-control">
                                                                 <br>
                                                                 <label for="Tier3" class="form-label">Tier 3</label>
-                                                                <input type="text" name="tier_3" value="<?= $tier_3; ?>" class="form-control" required>
+                                                                <input type="text" name="tier_3" value="<?= $tier_3; ?>" class="form-control">
                                                                 <br>
                                                                 <label for="SiteGroup" class="form-label">Site Group</label>
-                                                                <input type="text" name="site_group" value="<?= $site_group; ?>" class="form-control" required>
+                                                                <input type="text" name="site_group" value="<?= $site_group; ?>" class="form-control">
                                                                 <br>
                                                                 <label for="AssetSite" class="form-label">Asset Site</label>
-                                                                <input type="text" name="asset_site" value="<?= $asset_site; ?>" class="form-control" required>
+                                                                <input type="text" name="asset_site" value="<?= $asset_site; ?>" class="form-control">
                                                                 <br>
                                                                 <label for="Building" class="form-label">Building</label>
-                                                                <input type="text" name="building" value="<?= $building; ?>" class="form-control" required>
+                                                                <input type="text" name="building" value="<?= $building; ?>" class="form-control">
                                                                 <br>
                                                                 <label for="FloorRoom" class="form-label">Floor Room</label>
                                                                 <input type="text" name="floor_room" value="<?= $floor_room; ?>" class="form-control">
@@ -331,22 +323,22 @@ require 'cek.php';
                                                                 <input type="text" name="people_relationship_status" value="<?= $people_relationship_status; ?>" class="form-control">
                                                                 <br>
                                                                 <label for="Site" class="form-label">Site</label>
-                                                                <input type="text" name="site" value="<?= $site; ?>" class="form-control" required>
+                                                                <input type="text" name="site" value="<?= $site; ?>" class="form-control">
                                                                 <br>
                                                                 <label for="PSACode" class="form-label">PSA Code</label>
-                                                                <input type="text" name="psa_code" value="<?= $psa_code; ?>" class="form-control" required>
+                                                                <input type="text" name="psa_code" value="<?= $psa_code; ?>" class="form-control">
                                                                 <br>
                                                                 <label for="PSASiteName" class="form-label">PSA Site Name</label>
-                                                                <input type="text" name="psa_site_name" value="<?= $psa_site_name; ?>" class="form-control" required>
+                                                                <input type="text" name="psa_site_name" value="<?= $psa_site_name; ?>" class="form-control">
                                                                 <br>
                                                                 <label for="Organization" class="form-label">Orgnaization</label>
-                                                                <input type="text" name="organization" value="<?= $organization; ?>" class="form-control" required>
+                                                                <input type="text" name="organization" value="<?= $organization; ?>" class="form-control">
                                                                 <br>
                                                                 <label for="Department" class="form-label">Department</label>
-                                                                <input type="text" name="department" value="<?= $department; ?>" class="form-control" required>
+                                                                <input type="text" name="department" value="<?= $department; ?>" class="form-control">
                                                                 <br>
                                                                 <label for="RemedyLoginID" class="form-label">Remedy Login ID</label>
-                                                                <input type="text" name="remedy_login_id" value="<?= $remedy_login_id; ?>" class="form-control" required>
+                                                                <input type="text" name="remedy_login_id" value="<?= $remedy_login_id; ?>" class="form-control">
                                                                 <br>
                                                                 <label for="FullName" class="form-label">Full Name</label>
                                                                 <input type="text" name="full_name" value="<?= $full_name; ?>" class="form-control" required>
@@ -388,19 +380,19 @@ require 'cek.php';
                                                                 <input type="text" name="department_merged" value="<?= $department_merged; ?>" class="form-control">
                                                                 <br>
                                                                 <label for="Description" class="form-label">Description</label>
-                                                                <input type="text" name="description" value="<?= $description; ?>" class="form-control" required>
+                                                                <input type="text" name="description" value="<?= $description; ?>" class="form-control">
                                                                 <br>
                                                                 <label for="TagNumber" class="form-label">Tag Number</label>
-                                                                <input type="text" name="tag_number" value="<?= $tag_number; ?>" class="form-control" required>
+                                                                <input type="text" name="tag_number" value="<?= $tag_number; ?>" class="form-control">
                                                                 <br>
                                                                 <label for="SiegelNormalized" class="form-label">Siegel Normalized</label>
-                                                                <input type="text" name="siegel_normalized" value="<?= $siegel_normalized; ?>" class="form-control" required>
+                                                                <input type="text" name="siegel_normalized" value="<?= $siegel_normalized; ?>" class="form-control">
                                                                 <br>
                                                                 <label for="SiegelC" class="form-label">Siegel C</label>
-                                                                <input type="text" name="siegel_c" value="<?= $siegel_c; ?>" class="form-control" required>
+                                                                <input type="text" name="siegel_c" value="<?= $siegel_c; ?>" class="form-control">
                                                                 <br>
                                                                 <label for="PHMStatus" class="form-label">PHM Status SK033/SK026 APR 2023</label>
-                                                                <input type="text" name="phm_status" value="<?= $phm_status; ?>" class="form-control" required>
+                                                                <input type="text" name="phm_status" value="<?= $phm_status; ?>" class="form-control">
                                                                 <br>
                                                                 <label for="PCNewModel" class="form-label">PC New Model</label>
                                                                 <input type="text" name="pc_new_model" value="<?= $pc_new_model; ?>" class="form-control">
@@ -410,12 +402,13 @@ require 'cek.php';
                                                                 <br>
                                                                 <label for="Phase" class="form-label">Phase</label>
                                                                 <input type="text" name="phase" value="<?= $phase; ?>" class="form-control">
+                                                                <br>
                                                             </div>
                                                         </form>
 
                                                         <!-- Modal footer -->
                                                         <div class="modal-footer">
-                                                            <button type="submit" class="btn btn-primary" name="update">Update</button>
+                                                            <button type="submit" class="btn btn-primary" name="updatedatabase">Update</button>
                                                         </div>
                                                     </div>
                                                 </div>
