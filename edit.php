@@ -12,7 +12,7 @@ require 'cek.php';
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <title>Asset Management</title>
+    <title>Edit</title>
     <link href="css/styles.css" rel="stylesheet" />
     <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet" crossorigin="anonymous" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/js/all.min.js" crossorigin="anonymous"></script>
@@ -29,29 +29,41 @@ require 'cek.php';
                 <div class="sb-sidenav-menu">
                     <div class="nav">
                         <a class="nav-link" href="index.php">
-                            <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                            <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
                             Master Data
                         </a>
                         <a class="nav-link" href="edit.php">
-                            <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                            <div class="sb-nav-link-icon"><i class="fas fa-pencil-alt"></i></div>
                             Edit
                         </a>
-                        <a class="nav-link" href="export.php">
-                            <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
-                            Export
-                        </a>
                         <a class="nav-link" href="history.php">
-                            <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                            <div class="sb-nav-link-icon"><i class="far fa-clock"></i></div>
                             Update History
                         </a>
                         <div class="sb-sidenav-menu-heading"></div>
                         <a class="nav-link" href="logout.php">
+                            <div class="sb-nav-link-icon"><i class="fas fa-sign-out-alt"></i></div>
                             Logout
                         </a>
                     </div>
                 </div>
                 <div class="sb-sidenav-footer">
-                    <div class="small">Logged in as:</div>
+                    <div class="small">Logged in as:
+                        <?php
+                        $email = $_SESSION['email'];
+
+                        $query = "SELECT first_name, last_name FROM users WHERE email = '$email'";
+                        $result = mysqli_query($conn, $query);
+
+                        if ($result && mysqli_num_rows($result) > 0) {
+                            $row = mysqli_fetch_assoc($result);
+                            $full_name = $row['first_name'] . ' ' . $row['last_name'];
+                            echo $full_name;
+                        } else {
+                            echo 'User Not Found';
+                        }
+                        ?>
+                    </div>
                 </div>
             </nav>
         </div>
@@ -61,7 +73,7 @@ require 'cek.php';
                     <h1 class="mt-4">Edit Database</h1>
                     <div class="card mb-4">
                         <div class="card-header">
-                            <i class="fas fa-table mr-1"></i>
+                            <i class="fas fa-pencil-alt"></i>
                             Edit
                         </div>
                         <div class="card-body">
@@ -278,138 +290,134 @@ require 'cek.php';
                                                             <div class="modal-body">
                                                                 <input type="hidden" name="serial_number" value="<?= $serial_number ?>;">
                                                                 <label for="SerialNumber" class="form-label">Serial Number</label>
-                                                                <input type="text" name="serial_number" value="<?= $serial_number; ?>" class="form-control" disabled>
+                                                                <input type="text" name="serial_number" value="<?= $serial_number ?>" class="form-control" disabled>
                                                                 <br>
                                                                 <label for="Name" class="form-label">Name</label>
-                                                                <input type="text" name="name" value="<?= $name; ?>" class="form-control">
+                                                                <input type="text" name="name" value="<?= $name ?>" class="form-control">
                                                                 <br>
                                                                 <label for="Status" class="form-label">Status</label>
-                                                                <input type="text" name="status" value="<?= $status; ?>" class="form-control">
+                                                                <input type="text" name="status" value="<?= $status ?>" class="form-control">
                                                                 <br>
                                                                 <label for="ShortDescription" class="form-label">Short Description</label>
-                                                                <input type="text" name="short_description" value="<?= $short_description; ?>" class="form-control">
+                                                                <input type="text" name="short_description" value="<?= $short_description ?>" class="form-control">
                                                                 <br>
                                                                 <label for="SupplierName" class="form-label">Supplier Name</label>
-                                                                <input type="text" name="supplier_name" value="<?= $supplier_name; ?>" class="form-control">
+                                                                <input type="text" name="supplier_name" value="<?= $supplier_name ?>" class="form-control">
                                                                 <br>
                                                                 <label for="ModelNumber" class="form-label">Model Number</label>
-                                                                <input type="text" name="model_number" value="<?= $model_number; ?>" class="form-control">
+                                                                <input type="text" name="model_number" value="<?= $model_number ?>" class="form-control">
                                                                 <br>
                                                                 <label for="AssetID" class="form-label">Asset ID</label>
-                                                                <input type="text" name="asset_id" value="<?= $asset_id; ?>" class="form-control">
+                                                                <input type="text" name="asset_id" value="<?= $asset_id ?>" class="form-control">
                                                                 <br>
                                                                 <label for="Tier1" class="form-label">Tier 1</label>
-                                                                <input type="text" name="tier_1" value="<?= $tier_1; ?>" class="form-control">
+                                                                <input type="text" name="tier_1" value="<?= $tier_1 ?>" class="form-control">
                                                                 <br>
                                                                 <label for="Tier2" class="form-label">Tier 2</label>
-                                                                <input type="text" name="tier_2" value="<?= $tier_2; ?>" class="form-control">
+                                                                <input type="text" name="tier_2" value="<?= $tier_2 ?>" class="form-control">
                                                                 <br>
                                                                 <label for="Tier3" class="form-label">Tier 3</label>
-                                                                <input type="text" name="tier_3" value="<?= $tier_3; ?>" class="form-control">
+                                                                <input type="text" name="tier_3" value="<?= $tier_3 ?>" class="form-control">
                                                                 <br>
                                                                 <label for="SiteGroup" class="form-label">Site Group</label>
-                                                                <input type="text" name="site_group" value="<?= $site_group; ?>" class="form-control">
+                                                                <input type="text" name="site_group" value="<?= $site_group ?>" class="form-control">
                                                                 <br>
                                                                 <label for="AssetSite" class="form-label">Asset Site</label>
-                                                                <input type="text" name="asset_site" value="<?= $asset_site; ?>" class="form-control">
+                                                                <input type="text" name="asset_site" value="<?= $asset_site ?>" class="form-control">
                                                                 <br>
                                                                 <label for="Building" class="form-label">Building</label>
-                                                                <input type="text" name="building" value="<?= $building; ?>" class="form-control">
+                                                                <input type="text" name="building" value="<?= $building ?>" class="form-control">
                                                                 <br>
                                                                 <label for="FloorRoom" class="form-label">Floor Room</label>
-                                                                <input type="text" name="floor_room" value="<?= $floor_room; ?>" class="form-control">
+                                                                <input type="text" name="floor_room" value="<?= $floor_room ?>" class="form-control">
                                                                 <br>
                                                                 <label for="PeopleRelationshipStatus" class="form-label">People Relationship Status</label>
-                                                                <input type="text" name="people_relationship_status" value="<?= $people_relationship_status; ?>" class="form-control">
+                                                                <input type="text" name="people_relationship_status" value="<?= $people_relationship_status ?>" class="form-control">
                                                                 <br>
                                                                 <label for="Site" class="form-label">Site</label>
-                                                                <input type="text" name="site" value="<?= $site; ?>" class="form-control">
+                                                                <input type="text" name="site" value="<?= $site ?>" class="form-control">
                                                                 <br>
                                                                 <label for="PSACode" class="form-label">PSA Code</label>
-                                                                <input type="text" name="psa_code" value="<?= $psa_code; ?>" class="form-control">
+                                                                <input type="text" name="psa_code" value="<?= $psa_code ?>" class="form-control">
                                                                 <br>
                                                                 <label for="PSASiteName" class="form-label">PSA Site Name</label>
-                                                                <input type="text" name="psa_site_name" value="<?= $psa_site_name; ?>" class="form-control">
+                                                                <input type="text" name="psa_site_name" value="<?= $psa_site_name ?>" class="form-control">
                                                                 <br>
                                                                 <label for="Organization" class="form-label">Orgnaization</label>
-                                                                <input type="text" name="organization" value="<?= $organization; ?>" class="form-control">
+                                                                <input type="text" name="organization" value="<?= $organization ?>" class="form-control">
                                                                 <br>
                                                                 <label for="Department" class="form-label">Department</label>
-                                                                <input type="text" name="department" value="<?= $department; ?>" class="form-control">
+                                                                <input type="text" name="department" value="<?= $department ?>" class="form-control">
                                                                 <br>
                                                                 <label for="RemedyLoginID" class="form-label">Remedy Login ID</label>
-                                                                <input type="text" name="remedy_login_id" value="<?= $remedy_login_id; ?>" class="form-control">
+                                                                <input type="text" name="remedy_login_id" value="<?= $remedy_login_id ?>" class="form-control">
                                                                 <br>
                                                                 <label for="FullName" class="form-label">Full Name</label>
-                                                                <input type="text" name="full_name" value="<?= $full_name; ?>" class="form-control" required>
+                                                                <input type="text" name="full_name" value="<?= $full_name ?>" class="form-control" required>
                                                                 <br>
                                                                 <label for="EntityRelationshipStatus" class="form-label">Entity Relationship Status</label>
-                                                                <input type="text" name="entity_relationship_status" value="<?= $entity_relationship_status; ?>" class="form-control">
+                                                                <input type="text" name="entity_relationship_status" value="<?= $entity_relationship_status ?>" class="form-control">
                                                                 <br>
                                                                 <label for="Div" class="form-label">Div</label>
-                                                                <input type="text" name="div" value="<?= $div; ?>" class="form-control">
+                                                                <input type="text" name="div" value="<?= $div ?>" class="form-control">
                                                                 <br>
                                                                 <label for="Dept" class="form-label">Dept</label>
-                                                                <input type="text" name="dept" value="<?= $dept; ?>" class="form-control">
+                                                                <input type="text" name="dept" value="<?= $dept ?>" class="form-control">
                                                                 <br>
                                                                 <label for="SupportGroupSupportedbyRelationshipStatus" class="form-label">Support Group Supported by Relationship Status</label>
-                                                                <input type="text" name="support_group_supported_by_relationship_status" value="<?= $support_group_supported_by_relationship_status; ?>" class="form-control">
+                                                                <input type="text" name="support_group_supported_by_relationship_status" value="<?= $support_group_supported_by_relationship_status ?>" class="form-control">
                                                                 <br>
                                                                 <label for="SupportedbyOrganization" class="form-label">Supported by Organization</label>
-                                                                <input type="text" name="supported_by_organization" value="<?= $supported_by_organization; ?>" class="form-control">
+                                                                <input type="text" name="supported_by_organization" value="<?= $supported_by_organization ?>" class="form-control">
                                                                 <br>
                                                                 <label for="SupportedbySupportGroup" class="form-label">Suported by Support Group</label>
-                                                                <input type="text" name="supported_by_support_group" value="<?= $supported_by_support_group; ?>" class="form-control">
+                                                                <input type="text" name="supported_by_support_group" value="<?= $supported_by_support_group ?>" class="form-control">
                                                                 <br>
                                                                 <label for="SupportGroupManagedbyRelationshipStatus" class="form-label">Support Group Managed by Relationship Status</label>
-                                                                <input type="text" name="support_group_managed_by_relationship_status" value="<?= $support_group_managed_by_relationship_status; ?>" class="form-control">
+                                                                <input type="text" name="support_group_managed_by_relationship_status" value="<?= $support_group_managed_by_relationship_status ?>" class="form-control">
                                                                 <br>
                                                                 <label for="ManagedbyOrganization" class="form-label">Managed by Organization</label>
-                                                                <input type="text" name="managed_by_organization" value="<?= $managed_by_organization; ?>" class="form-control">
+                                                                <input type="text" name="managed_by_organization" value="<?= $managed_by_organization ?>" class="form-control">
                                                                 <br>
                                                                 <label for="ManagedbySupportGroup" class="form-label">Managed by Support Group</label>
-                                                                <input type="text" name="managed_by_support_group" value="<?= $managed_by_support_group; ?>" class="form-control">
+                                                                <input type="text" name="managed_by_support_group" value="<?= $managed_by_support_group ?>" class="form-control">
                                                                 <br>
                                                                 <label for="NormalizedEntity" class="form-label">Normalized Entity</label>
-                                                                <input type="text" name="normalized_entity" value="<?= $normalized_entity; ?>" class="form-control">
+                                                                <input type="text" name="normalized_entity" value="<?= $normalized_entity ?>" class="form-control">
                                                                 <br>
                                                                 <label for="OrganizationMerged" class="form-label">Organization Merged</label>
-                                                                <input type="text" name="organization_merged" value="<?= $organization_merged; ?>" class="form-control">
+                                                                <input type="text" name="organization_merged" value="<?= $organization_merged ?>" class="form-control">
                                                                 <br>
                                                                 <label for="DepartmentMerged" class="form-label">Department Merged</label>
-                                                                <input type="text" name="department_merged" value="<?= $department_merged; ?>" class="form-control">
+                                                                <input type="text" name="department_merged" value="<?= $department_merged ?>" class="form-control">
                                                                 <br>
                                                                 <label for="Description" class="form-label">Description</label>
-                                                                <input type="text" name="description" value="<?= $description; ?>" class="form-control">
+                                                                <input type="text" name="description" value="<?= $description ?>" class="form-control">
                                                                 <br>
                                                                 <label for="TagNumber" class="form-label">Tag Number</label>
-                                                                <input type="text" name="tag_number" value="<?= $tag_number; ?>" class="form-control">
+                                                                <input type="text" name="tag_number" value="<?= $tag_number ?>" class="form-control">
                                                                 <br>
                                                                 <label for="SiegelNormalized" class="form-label">Siegel Normalized</label>
-                                                                <input type="text" name="siegel_normalized" value="<?= $siegel_normalized; ?>" class="form-control">
+                                                                <input type="text" name="siegel_normalized" value="<?= $siegel_normalized ?>" class="form-control">
                                                                 <br>
                                                                 <label for="SiegelC" class="form-label">Siegel C</label>
-                                                                <input type="text" name="siegel_c" value="<?= $siegel_c; ?>" class="form-control">
+                                                                <input type="text" name="siegel_c" value="<?= $siegel_c ?>" class="form-control">
                                                                 <br>
                                                                 <label for="PHMStatus" class="form-label">PHM Status SK033/SK026 APR 2023</label>
-                                                                <input type="text" name="phm_status" value="<?= $phm_status; ?>" class="form-control">
+                                                                <input type="text" name="phm_status" value="<?= $phm_status ?>" class="form-control">
                                                                 <br>
                                                                 <label for="PCNewModel" class="form-label">PC New Model</label>
-                                                                <input type="text" name="pc_new_model" value="<?= $pc_new_model; ?>" class="form-control">
+                                                                <input type="text" name="pc_new_model" value="<?= $pc_new_model ?>" class="form-control">
                                                                 <br>
                                                                 <label for="Company" class="form-label">Company</label>
-                                                                <input type="text" name="company" value="<?= $company; ?>" class="form-control">
+                                                                <input type="text" name="company" value="<?= $company ?>" class="form-control">
                                                                 <br>
                                                                 <label for="Phase" class="form-label">Phase</label>
-                                                                <input type="text" name="phase" value="<?= $phase; ?>" class="form-control">
+                                                                <input type="text" name="phase" value="<?= $phase ?>" class="form-control">
                                                                 <br>
+                                                                <button type="submit" class="btn btn-primary" name="update">Update</button>
                                                             </div>
                                                         </form>
-
-                                                        <!-- Modal footer -->
-                                                        <div class="modal-footer">
-                                                            <button type="submit" class="btn btn-primary" name="updatedatabase">Update</button>
-                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
