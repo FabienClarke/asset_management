@@ -1,6 +1,7 @@
 <?php
 require 'function.php';
 require 'cek.php';
+
 ?>
 
 <!DOCTYPE html>
@@ -12,7 +13,7 @@ require 'cek.php';
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <title>Export</title>
+    <title>Update History</title>
     <link href="css/styles.css" rel="stylesheet" />
     <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet" crossorigin="anonymous" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/js/all.min.js" crossorigin="anonymous"></script>
@@ -29,30 +30,41 @@ require 'cek.php';
                 <div class="sb-sidenav-menu">
                     <div class="nav">
                         <a class="nav-link" href="index.php">
-                            <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                            <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
                             Master Data
                         </a>
                         <a class="nav-link" href="edit.php">
-                            <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                            <div class="sb-nav-link-icon"><i class="fas fa-pencil-alt"></i></div>
                             Edit
                         </a>
-                        <a class="nav-link" href="export.php">
-                            <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
-                            Export
-                        </a>
                         <a class="nav-link" href="history.php">
-                            <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                            <div class="sb-nav-link-icon"><i class="far fa-clock"></i></div>
                             Update History
                         </a>
                         <div class="sb-sidenav-menu-heading"></div>
                         <a class="nav-link" href="logout.php">
+                            <div class="sb-nav-link-icon"><i class="fas fa-sign-out-alt"></i></div>
                             Logout
                         </a>
                     </div>
                 </div>
                 <div class="sb-sidenav-footer">
-                    <div class="small">Logged in as:</div>
-                    Start Bootstrap
+                    <div class="small">Logged in as:
+                        <?php
+                        $email = $_SESSION['email'];
+
+                        $query = "SELECT first_name, last_name FROM users WHERE email = '$email'";
+                        $result = mysqli_query($conn, $query);
+
+                        if ($result && mysqli_num_rows($result) > 0) {
+                            $row = mysqli_fetch_assoc($result);
+                            $full_name = $row['first_name'] . ' ' . $row['last_name'];
+                            echo $full_name;
+                        } else {
+                            echo 'User Not Found';
+                        }
+                        ?>
+                    </div>
                 </div>
             </nav>
         </div>
@@ -62,7 +74,7 @@ require 'cek.php';
                     <h1 class="mt-4">Update History</h1>
                     <div class="card mb-4">
                         <div class="card-header">
-                            <i class="fas fa-table mr-1"></i>
+                            <i class="far fa-clock"></i>
                             Update History
                         </div>
                         <div class="card-body">
@@ -70,32 +82,31 @@ require 'cek.php';
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
-                                            <th>No.</th>
                                             <th>Edit Date</th>
                                             <th>Edited by</th>
-                                        </tr>                                        
+                                        </tr>
                                     </thead>
                                     <tfoot>
                                         <tr>
-                                            <th>No.</th>
                                             <th>Edit Date</th>
                                             <th>Edited by</th>
                                         </tr>
                                     </tfoot>
                                     <tbody>
                                         <?php
-                                        $ambildatatgldanuser = mysqli_query($conn, "select * from history");
-                                        $i = 1;
+                                        $ambildatatgldanuser = mysqli_query($conn, "SELECT * FROM history");
                                         while ($data = mysqli_fetch_array($ambildatatgldanuser)) {
                                             $edit_date = $data['edit_date'];
+                                            $editor = $data['editor'];
+
+                                        ?>
+                                            <tr>
+                                                <td><?= $edit_date; ?></td>
+                                                <td><?= $editor ?></td>
+                                            </tr>
+                                        <?php
                                         }
                                         ?>
-                                        <tr>
-                                            <td></td>
-                                        </tr>
-                                        <tr>
-                                            <td></td>
-                                        </tr>
                                     </tbody>
                                 </table>
                             </div>
