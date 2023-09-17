@@ -1,6 +1,7 @@
 <?php
 require 'function.php';
 require 'cek.php';
+
 ?>
 
 <!DOCTYPE html>
@@ -29,29 +30,41 @@ require 'cek.php';
                 <div class="sb-sidenav-menu">
                     <div class="nav">
                         <a class="nav-link" href="index.php">
-                            <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                            <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
                             Master Data
                         </a>
                         <a class="nav-link" href="edit.php">
-                            <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                            <div class="sb-nav-link-icon"><i class="fas fa-pencil-alt"></i></div>
                             Edit
                         </a>
-                        <a class="nav-link" href="export.php">
-                            <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
-                            Export
-                        </a>
                         <a class="nav-link" href="history.php">
-                            <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                            <div class="sb-nav-link-icon"><i class="far fa-clock"></i></div>
                             Update History
                         </a>
                         <div class="sb-sidenav-menu-heading"></div>
                         <a class="nav-link" href="logout.php">
+                            <div class="sb-nav-link-icon"><i class="fas fa-sign-out-alt"></i></div>
                             Logout
                         </a>
                     </div>
                 </div>
                 <div class="sb-sidenav-footer">
-                    <div class="small">Logged in as:</div>
+                    <div class="small">Logged in as:
+                        <?php
+                        $email = $_SESSION['email'];
+
+                        $query = "SELECT first_name, last_name FROM users WHERE email = '$email'";
+                        $result = mysqli_query($conn, $query);
+
+                        if ($result && mysqli_num_rows($result) > 0) {
+                            $row = mysqli_fetch_assoc($result);
+                            $full_name = $row['first_name'] . ' ' . $row['last_name'];
+                            echo $full_name;
+                        } else {
+                            echo 'User Not Found';
+                        }
+                        ?>
+                    </div>
                 </div>
             </nav>
         </div>
@@ -61,8 +74,14 @@ require 'cek.php';
                     <h1 class="mt-4">Master Data</h1>
                     <div class="card mb-4">
                         <div class="card-header">
-                            <i class="fas fa-table mr-1"></i>
-                            Master Data
+                            <button type="button" class="btn btn-warning" onclick="redirect()">
+                                Export
+                            </button>
+                            <script>
+                                function redirect() {
+                                    window.location.href = "export.php"
+                                }
+                            </script>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
